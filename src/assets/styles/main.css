@@ -33,10 +33,11 @@
 }
 
 body {
+  @apply bg-[color:var(--background-color)] text-[color:var(--text-color)];
   min-height: 100dvh;
   transition:
-    color 0.5s,
-    background-color 0.5s;
+    background-color 0.4s ease,
+    color 0.4s ease;
   font-family:
     Inter,
     -apple-system,
@@ -56,3 +57,4 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+
