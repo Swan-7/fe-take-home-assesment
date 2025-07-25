@@ -72,6 +72,8 @@ To stay within the time frame scope:
 * Each academy card gracefully handles edge cases:
 * If no devices need replacement, it shows: "All devices appear healthy"
 * If no unknown devices exist, it shows: "No unknown battery data for this academy"
+* Dark mode toggle built with CSS variable support and transition animations
+* Logo rendered in the header and favicon
 * Skeleton loading was skipped because all data is from a local JSON file.
 
 # Future Improvements
