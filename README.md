@@ -4,7 +4,7 @@ A Vue 3 web application that helps field engineers quickly identify schools with
 
 # Features
 
-- Parses battery logs from `battery.json`
+- Parses battery logs from 'battery.json'
 - Groups battery data by academy and device
 - Calculates average battery drain per device
 - Flags devices with high battery usage (>30%/day)
@@ -31,7 +31,7 @@ pnpm install
 
 # 2. Set up environment
 
-Create a .env file in the root (if it doesn't exist) and add:
+Create a .env file in the root and add:
 
 VITE_APP_BASE_PATH="/"
 
@@ -85,5 +85,4 @@ To stay within the time frame scope:
 
 # Author
 
-Benita Daniel — [GitHub](https://github.com/swan-7)
-
+Benita Daniel — [GitHub](https://github.com/Swan-7)

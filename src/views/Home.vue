@@ -1,12 +1,12 @@
 <template>
-  <div class="p-4 sm:p-6 md:p-8 max-w-full md:max-w-5xl mx-auto bg-[color:var(--background-color)] text-[color:var(--text-color)] transition-colors duration-500">
+  <div class="p-4 sm:p-6 md:p-8 max-w-full md:max-w-6xl mx-auto bg-[color:var(--background-color)] text-[color:var(--text-color)] transition-colors duration-500 min-h-screen">
     <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-6 gap-4">
       <img src="@/assets/images/logo.svg" alt="Logo" class="h-10" />
       <button
         @click="toggleDarkMode"
-        class=" text-sm border rounded px-3 py-1 text-[color:var(--text-color)] border-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors duration-300"
+        class="text-sm border rounded px-3 py-1 text-[color:var(--text-color)] border-gray-400 hover:bg-[color:var(--menu-hover-background)] transition-colors duration-300"
       >
-        Toggle theme
+        Toggle Dark Mode
       </button>
     </div>
 
@@ -19,7 +19,7 @@
     <div
       v-for="academy in batteryStatus"
       :key="academy.academyId"
-      class="mb-8 bg-white border border-gray-200 rounded-lg shadow-sm p-4 sm:p-6 dark:bg-gray-900 transition-colors duration-500"
+      class="mb-8 bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-lg shadow-sm p-4 sm:p-6 transition-colors duration-500 hover:bg-[color:var(--menu-hover-background)] dark:hover:bg-gray-800"
     >
       <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-2 gap-2">
         <h2 class="text-base sm:text-lg font-semibold">
@@ -32,7 +32,7 @@
       </div>
 
       <div class="mt-4">
-        <h3 class="text-sm font-semibold text-red-700 mb-2 flex items-center">
+        <h3 class="text-sm font-semibold text-red-700 dark:text-red-400 mb-2 flex items-center">
           <i class="pi pi-exclamation-triangle mr-2 text-red-500" /> Devices Needing Replacement
         </h3>
         <ul
@@ -48,11 +48,11 @@
             <strong>{{ device.averageDrainPerDay }}%</strong>
           </li>
         </ul>
-        <p v-else class="text-sm italic">All devices appear healthy 🎉</p>
+        <p v-else class="text-sm italic">All devices appear healthy</p>
       </div>
 
       <div class="mt-4">
-        <h3 class="text-sm font-semibold text-yellow-700 mb-2 flex items-center">
+        <h3 class="text-sm font-semibold text-yellow-700 dark:text-yellow-400 mb-2 flex items-center">
           <i class="pi pi-question mr-2 text-yellow-500" /> Devices with Unknown Battery Usage
         </h3>
         <ul
@@ -85,7 +85,18 @@ onMounted(() => {
 });
 
 function toggleDarkMode() {
-  document.documentElement.classList.toggle('dark');
+  const html = document.documentElement;
+  if (html.classList.contains('dark')) {
+    html.classList.remove('dark');
+    localStorage.setItem('theme', 'light');
+  } else {
+    html.classList.add('dark');
+    localStorage.setItem('theme', 'dark');
+  }
+}
+
+if (localStorage.getItem('theme') === 'dark') {
+  document.documentElement.classList.add('dark');
 }
 </script>
 
